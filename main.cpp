@@ -20,10 +20,10 @@ int main()
 	
 	/* ////////////////////////////// Image ///////////////////////////////////////////////////////////////////////////////////////////// */
 	sf::Image mapimage, enemyimage, towerimage, projectileimage;
-	mapimage.loadFromFile("C:\\Users\\Eduard\\Documents\\VS_projects\\sfml_project\\source\\map.png");
-	enemyimage.loadFromFile("C:\\Users\\Eduard\\Documents\\VS_projects\\sfml_project\\source\\enemies.png");
-	towerimage.loadFromFile("C:\\Users\\Eduard\\Documents\\VS_projects\\sfml_project\\source\\towers.png");
-	projectileimage.loadFromFile("C:\\Users\\Eduard\\Documents\\VS_projects\\sfml_project\\source\\projectile.png");
+	mapimage.loadFromFile("source\\map.png");
+	enemyimage.loadFromFile("source\\enemies.png");
+	towerimage.loadFromFile("source\\towers.png");
+	projectileimage.loadFromFile("source\\projectile.png");
 	
 	/* ////////////////////////////// Level ///////////////////////////////////////////////////////////////////////////////////////////// */
 	Level level(mapimage, enemyimage);
@@ -34,9 +34,9 @@ int main()
 
 	/* ////////////////////////////// Tower upgrade and buy textures and sprites //////////////////////////////////////////////////////// */
 	sf::Texture tower_buy_texture, tower_upgrade_texture, background_texture;
-	tower_buy_texture.loadFromFile("C:\\Users\\Eduard\\Documents\\VS_projects\\sfml_project\\source\\towerbuy.png");
-	tower_upgrade_texture.loadFromFile("C:\\Users\\Eduard\\Documents\\VS_projects\\sfml_project\\source\\towerupgrade.png");
-	background_texture.loadFromFile("C:\\Users\\Eduard\\Documents\\VS_projects\\sfml_project\\source\\background.png");
+	tower_buy_texture.loadFromFile("source\\towerbuy.png");
+	tower_upgrade_texture.loadFromFile("source\\towerupgrade.png");
+	background_texture.loadFromFile("source\\background.png");
 	background_texture.setRepeated(true);
 	sf::Sprite tower_buy_sprite(tower_buy_texture);
 	sf::Sprite tower_upgrade_sprite(tower_upgrade_texture);
@@ -47,7 +47,7 @@ int main()
 
 	/* ////////////////////////////// Text ////////////////////////////////////////////////////////////////////////////////////////////// */
 	sf::Font font;
-	font.loadFromFile("C:\\Users\\Eduard\\Documents\\VS_projects\\sfml_project\\source\\PixeloidSans.ttf");
+	font.loadFromFile("source\\PixeloidSans.ttf");
 	// money and health state
 	sf::Text values_state("", font, 40);
 	values_state.setPosition(1620, 5);
@@ -120,12 +120,16 @@ int main()
 						in_level_choice = false;
 						in_game = true;
 						clock.restart(); timer.restart();
+						projectiles.clear();
+						towers.clear();
 						level.set_level(LevelNumber::Level1);
 					}
 					if (text_level2.getGlobalBounds().contains(mouse_pos)) {
 						in_level_choice = false;
 						in_game = true;
 						clock.restart(); timer.restart();
+						projectiles.clear();
+						towers.clear();
 						level.set_level(LevelNumber::Level2);
 					}
 				}
